@@ -1,3 +1,6 @@
+require 'ostruct'
+
+
 class BestBuyService
 
   def initialize
@@ -8,18 +11,12 @@ class BestBuyService
 
   def find_stores(zipcode)
     response = @connection.get "/v1/stores(area(#{zipcode},25))"
-    parse(response.body)
+    JSON.parse(response.body, object_class: OpenStruct)
   end
 
   def find_store(id)
     response = @connection.get "v1/stores(storeId=#{id})"
-    parse(response.body)
-  end
-
-  private
-
-  def parse(response)
-    JSON.parse(response)
-  end
+    JSON.parse(response.body, object_class: OpenStruct)
+ end
 
 end

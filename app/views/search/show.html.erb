@@ -1,19 +1,26 @@
 
-<%= @store["longName"] %>
+<%= @store.longName %>
+<br></br>
 
-<%= @store["address"] %>
+<%= @store.address %>
+<br></br>
 
-<%= @store["city"] %>
+<%= @store.city %>
+<br></br>
 
-<%= @store["region"] %>
+<%= @store.region %>
+<br></br>
 
-<%= @store["fullPostalCode"] %>
-<%= @store["storeType"] %>
+<%= @store.fullPostalCode%>
+<br></br>
+
+<%= @store.storeType %>
+<br></br>
 
 <ul>
   <% @hours.each do |time| %>
 <li>
-  <%= time %>
+  <%=time %>
 </li>
 <%end %>
 </ul>
