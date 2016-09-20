@@ -10,6 +10,5 @@ RSpec.feature "user can search by zipcode" do
 
     expect(page).to have_content "17 Total Stores"
     expect(page).to have_content "Best Buy Mobile"
-    expect(page).to have_content "phone:303-270-9189"
   end
 end
