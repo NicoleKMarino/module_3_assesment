@@ -12,20 +12,19 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    byebug 
     @item = Item.create(item_params)
     respond_with @item
   end
 
-  def update
-    @item = Item.update(params[:id], item_params)
-    respond_with @item
+  def destroy
+    @item = Item.find(params[:id]).destroy
+    head :no_content
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:name,:description,:image_url)
+    params.permit(:name,:description,:image_url)
   end
 
 end

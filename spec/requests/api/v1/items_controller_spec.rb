@@ -12,6 +12,15 @@ RSpec.describe Api::V1::ItemsController, type: :request do
       expect(2).to eq(items.count)
     end
 
+    describe "POST#create" do
+      it 'returns item created' do
+      post "/api/v1/items?name=tester&description=tester&image_url=tester"
+      expect(response.status).to eq(200)
+      item_information = JSON.parse(response.body)
+      expect(item_information["name"]).to eq("tester")
+    end
+  end
+
     it 'sends a list of one item' do
       create(:item)
 
@@ -44,16 +53,13 @@ RSpec.describe Api::V1::ItemsController, type: :request do
       expect(item.name).to eq(item_information["name"])
     end
 
-    describe "GET#create" do
-      it 'returns a createditem' do
-        
-        get "/api/v1/items/create"
-        item_information = JSON.parse(response.body)
+    describe "DELETE#destroy" do
+      it 'returns a 204' do
+        item = create(:item)
+        delete "/api/v1/items/1"
 
-        expect(response.status).to eq(200)
-
-        expect(item.id).to eq(item_information["id"])
-        expect(item.name).to eq(item_information["name"])
+        expect(response.status).to eq(204)
       end
+    end
   end
 end
