@@ -1,7 +1,7 @@
 <h4><%= @total %> Total Stores</h4>
 <ul>
 <%@stores.each do |store| %>
-<li><%= link_to "#{store['longName']}", search_path(id: store["storeId"]) %></li>
+<li><%= link_to "#{store['longName']}", store_path(id: store["storeId"]) %></li>
 distance:<%= store["distance"] %>
 <br></br>
 phone:<%= store["phone"] %>

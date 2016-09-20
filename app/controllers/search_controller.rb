@@ -7,7 +7,7 @@ class SearchController < ApplicationController
 
   def show
     @store = bb_services.find_store(params[:id])["stores"].first
-    @hours = @store["hours"]
+    @hours = @store["hours"].split(';')
   end
 
 end
