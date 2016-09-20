@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+include TestHelper
 RSpec.describe Api::V1::ItemsController, type: :request do
   describe "GET#index" do
     it 'returns all existing items' do
@@ -43,5 +43,17 @@ RSpec.describe Api::V1::ItemsController, type: :request do
       expect(item.id).to eq(item_information["id"])
       expect(item.name).to eq(item_information["name"])
     end
+
+    describe "GET#create" do
+      it 'returns a createditem' do
+        
+        get "/api/v1/items/create"
+        item_information = JSON.parse(response.body)
+
+        expect(response.status).to eq(200)
+
+        expect(item.id).to eq(item_information["id"])
+        expect(item.name).to eq(item_information["name"])
+      end
   end
 end

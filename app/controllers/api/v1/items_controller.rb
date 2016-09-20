@@ -1,22 +1,26 @@
 class Api::V1::ItemsController < ApplicationController
-  respond_to :json, :xml
+  respond_to :json
 
   def index
-    respond_with Item.all
+    @items = Item.all
+    respond_with @items
   end
 
   def show
-    respond_with Item.find(params[:id])
+    @item = Item.find(params[:id])
+    respond_with @item
   end
 
   def create
-    respond_with Item.create(item_params)
+    byebug 
+    @item = Item.create(item_params)
+    respond_with @item
   end
 
   def update
-    respond_with Item.update(params[:id], item_params)
+    @item = Item.update(params[:id], item_params)
+    respond_with @item
   end
-
 
   private
 
