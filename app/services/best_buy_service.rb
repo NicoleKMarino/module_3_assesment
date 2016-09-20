@@ -11,6 +11,11 @@ class BestBuyService
     parse(response.body)
   end
 
+  def find_store(id)
+    response = @connection.get "v1/stores(storeId=#{id})"
+    parse(response.body)
+  end
+
   private
 
   def parse(response)
