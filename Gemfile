@@ -17,6 +17,7 @@ gem 'capybara'
 gem 'launchy'
 gem 'database_cleaner'
 gem 'responders'
+gem 'factory_girl_rails'
 
 group :development do
   gem "spring"
